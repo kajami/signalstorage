@@ -1,1 +1,1 @@
-Signal storage for signals and devices. Made with Java Spring Boot & Thymeleaf.
+Signal storage for signals and SDR devices. Made with Java Spring Boot & Thymeleaf.
