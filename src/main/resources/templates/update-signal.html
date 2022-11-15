@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Update signal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+</head>
+<body>
+	<h1>Update signal</h1>
+	<form action="#" 
+		th:action="@{/saveupdate}" 
+		th:object="${signal}"
+		method="post">
+			<label for="type">Type</label>
+			<input type="text" id="type" th:field="*{type}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="frequency">Frequency</label>
+			<input type="text" id="frequency" th:field="*{frequency}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="datetime">Date and Time</label>
+			<input type="datetime-local" th:field="*{datetime}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+ 			<label for="devicelist">Device</label>
+			<select id="devicelist" th:field="*{device}" class="form-control">
+				<option th:each="device: ${devices}" th:value="${device.deviceId}" th:text="${device.name}"></option>
+			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<a class="btn btn-success" href="/add-updated-device">Add new Device</a>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		    <input type="submit" value="Update Signal">		    		    
+	</form>
+</body>
+</html>

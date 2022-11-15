@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Signal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+</head>
+<body>
+	<h1>Add Signal</h1>
+	<div class="col-md-4">
+		<form th:object="${signal}" th:action="@{save}" action="#" method="post">
+		  	<label for="devicelist">Device</label>
+			<select id="devicelist" th:field="*{device}" class="form-control">
+				<option th:each="device: ${devices}" th:value="${device.deviceId}" th:text="${device.name}"></option>
+			</select>
+			<a class="btn btn-success" href="/add-device">Add new Device</a>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="type">Type</label>
+		  	<select id = "type" th:field="*{type}">
+    			<option th:value="'FM'" th:text="FM"></option>
+    			<option th:value="'AM'" th:text="AM"></option>
+			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+				<label for="frequency">Frequency</label>
+				<input type="text" id="frequency" th:field="*{frequency}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			  	<label for="datetime">Date and Time</label>
+				<input type="datetime-local" th:field="*{datetime}" />
+			<div style="clear: both; display: block; height: 10px;"></div>	
+					
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

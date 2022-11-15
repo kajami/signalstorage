@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Device</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+</head>
+<body>
+	<h1>Add Device</h1>
+	<div class="col-md-4">
+		<form th:object="${device}" th:action="@{savedevice}" action="#" method="post">
+		  	<label for="type">Name</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>		
+			<button type="submit" class="btn btn-success">Save</button>
+		</form>
+	</div>
+</body>
+</html>

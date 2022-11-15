@@ -1,0 +1,1 @@
+Signal storage for signals and devices. Made with Java Spring Boot & Thymeleaf.

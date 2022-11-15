@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<title>Saved devices</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+	</head>
+	<body>
+	<div class="col-md-4">
+		<h1>Devices</h1>
+	</div>	
+	<div style="margin-left:10px">
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<th>Device name</th>
+				</tr>
+				<tr th:each="device : ${devices}">
+					<td th:text="${device.name}"></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete-device/{id}(id=${device.deviceId})}">Delete</a></td>		
+				</tr>
+			</tbody>		
+		</table>
+		<a class="btn btn-success" href="/add-updated-device">Add new Device</a>
+		<a class="btn btn-primary" href="/signals">Back to signal list</a>		
+	</div>
+	</body>
+</html>

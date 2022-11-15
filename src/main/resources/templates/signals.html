@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+		<title>Signal storage</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+	</head>
+	<body>
+	<div class="col-md-4">
+		<h1>Signals</h1>
+	</div>	
+	<div style="margin-left:10px">
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<th>Signal type</th>
+					<th>Signal frequency MHz</th>
+					<th>Device</th>
+				</tr>
+				<tr th:each="signal : ${signals}">
+					<td th:text="${signal.type}"></td>
+					<td th:text="${signal.frequency}"></td>
+					<td th:text="${signal.device.getName()}"></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${signal.id})}">Delete</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-primary" th:href="@{/update/{id}(id=${signal.id})}">Update</a></td>	
+				</tr>
+			</tbody>		
+		</table>
+		
+		<a class="btn btn-success" href="/add-signal">Add new Signal</a>
+		<a class="btn btn-primary" href="/devices">Show saved Devices</a>
+		
+		<div class="col-md-4" style="padding:20px 0">
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+			</form>
+		</div>	
+		
+	</div>
+	</body>
+</html>
